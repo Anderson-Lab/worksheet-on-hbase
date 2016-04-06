@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Worksheet on HBase by Anderson-Lab</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Worksheet on HBase</h1>
+        <p>DATA 210 - Spring 2016</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/Anderson-Lab/worksheet-on-hbase" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/Anderson-Lab/worksheet-on-hbase/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/Anderson-Lab/worksheet-on-hbase/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h1>
+
+<h2>
+<a id="installing-java" class="anchor" href="#installing-java" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing Java</h2>
+
+<ol>
+<li>sudo apt-get install python-software-properties</li>
+<li>sudo apt-get install software-properties-common</li>
+<li>sudo add-apt-repository ppa:webupd8team/java</li>
+<li>sudo apt-get update</li>
+<li>sudo apt-get install oracle-java7-installer</li>
+</ol>
+
+<h2>
+<a id="installing-hbase" class="anchor" href="#installing-hbase" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing HBase</h2>
+
+<ol>
+<li>wget <a href="http://apache.claz.org/hbase/stable/hbase-1.1.4-bin.tar.gz">http://apache.claz.org/hbase/stable/hbase-1.1.4-bin.tar.gz</a>
+</li>
+<li>tar xfvz hbase-1.1.4-bin.tar.gz</li>
+<li>sudo mkdir /usr/lib/hbase</li>
+<li>sudo mv hbase-1.1.4/ /usr/lib/hbase</li>
+<li>We need to change the JAVA_HOME directory. Open the start script with "sudo nano /usr/lib/hbase/hbase-1.1.4/conf/hbase-env.sh". Then find the line that read "# export JAVA_HOME=/usr/java/jdk1.6.0/" and change it to "export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64/". Please note how I removed the # in addition to changing the directory.</li>
+<li>Now open your .bashrc file with "nano ~/.bashrc" and add the following line at the end "export HBASE_HOME=/usr/lib/hbase/hbase-1.1.4". Then save this file and exit nano.</li>
+<li>Now type "bash" and hit enter.</li>
+</ol>
+
+<h2>
+<a id="configuring-hbase" class="anchor" href="#configuring-hbase" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuring HBase</h2>
+
+<p>Now type "sudo nano $HBASE_HOME/conf/hbase-site.xml" and change the entire file so it looks like:</p>
+
+<pre><code>&lt;?xml version="1.0"?&gt;
+&lt;?xml-stylesheet type="text/xsl" href="configuration.xsl"?&gt;
+&lt;!--
+/**
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+--&gt;
+&lt;configuration&gt;
+&lt;property&gt;
+
+&lt;name&gt;hbase.rootdir&lt;/name&gt;
+
+&lt;value&gt;file:///home/vagrant/HBASE/hbase&lt;/value&gt;
+
+&lt;/property&gt;
+
+&lt;property&gt;
+
+&lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;
+
+&lt;value&gt;/home/vagrant/HBASE/zookeeper&lt;/value&gt;
+
+&lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre>
+
+<h1>
+<a id="starting-hbase" class="anchor" href="#starting-hbase" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Starting hbase</h1>
+
+<ol>
+<li>sudo $HBASE_HOME/bin/start-hbase.sh</li>
+<li>sudo $HBASE_HOME/bin/hbase shell</li>
+</ol>
+
+<h1>
+<a id="loading-data" class="anchor" href="#loading-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Loading data</h1>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/Anderson-Lab">Anderson-Lab</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
