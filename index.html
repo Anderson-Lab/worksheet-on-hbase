@@ -62,7 +62,7 @@
 <li>tar xfvz hbase-1.1.4-bin.tar.gz</li>
 <li>sudo mkdir /usr/lib/hbase</li>
 <li>sudo mv hbase-1.1.4/ /usr/lib/hbase</li>
-<li>We need to change the JAVA_HOME directory. Open the start script with "sudo nano /usr/lib/hbase/hbase-1.1.4/conf/hbase-env.sh". Then find the line that read "# export JAVA_HOME=/usr/java/jdk1.6.0/" and change it to "export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64/". Please note how I removed the # in addition to changing the directory.</li>
+<li>We need to change the JAVA_HOME directory. Open the start script with "sudo nano /usr/lib/hbase/hbase-1.1.4/conf/hbase-env.sh". Then find the line that read "# export JAVA_HOME=/usr/java/jdk1.6.0/" and change it to "export JAVA_HOME=/usr/lib/jvm/java-7-oracle". Please note how I removed the # in addition to changing the directory.</li>
 <li>Now open your .bashrc file with "nano ~/.bashrc" and add the following line at the end "export HBASE_HOME=/usr/lib/hbase/hbase-1.1.4". Then save this file and exit nano.</li>
 <li>Now type "bash" and hit enter.</li>
 </ol>
