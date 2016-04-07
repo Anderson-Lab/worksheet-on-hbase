@@ -99,7 +99,7 @@
 
 &lt;name&gt;hbase.rootdir&lt;/name&gt;
 
-&lt;value&gt;file:///home/vagrant/HBASE/hbase&lt;/value&gt;
+&lt;value&gt;file:///home/hduser/HBASE/hbase&lt;/value&gt;
 
 &lt;/property&gt;
 
@@ -107,7 +107,7 @@
 
 &lt;name&gt;hbase.zookeeper.property.dataDir&lt;/name&gt;
 
-&lt;value&gt;/home/vagrant/HBASE/zookeeper&lt;/value&gt;
+&lt;value&gt;/home/hduser/HBASE/zookeeper&lt;/value&gt;
 
 &lt;/property&gt;
 &lt;/configuration&gt;
@@ -122,7 +122,14 @@
 </ol>
 
 <h1>
-<a id="loading-data" class="anchor" href="#loading-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Loading data</h1>
+<a id="questions" class="anchor" href="#questions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Questions</h1>
+
+<ol>
+<li>Create a table called wiki like we did in lecture with a single family column called text.</li>
+<li>Add two pages (rows). One called Home and one called DATA210. Make the value of the text family column for Home be "Welcome to Wiki!" and make the text family column for DATA210 be "Data 210 syllabus".</li>
+<li>Now modify the table wiki to include the revisions column as we did in class. NOTE: The alter statements in the notes are broken up over two lines.</li>
+<li>Now add revision information of your choosing to each row so we can track who made a change to the wiki and what comment they left behind. Make up the data. </li>
+</ol>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/Anderson-Lab">Anderson-Lab</a></p>
